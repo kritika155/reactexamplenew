@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ChildClass } from './Mood';
+import  Child  from './Child';
+import { Sibling } from './Sibling';
+import { Home } from './Home';
+import { Wow } from './Facebook';
+import { AttentionGrabber } from './AttentionGrabber';
+import { GuineaPigs } from './GuineaPig';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class ParentClass extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { totalClicks: 0 , name: 'Kritika Roy' };
+    
+    this.changeName = this.changeName.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
+  changeName(newName) {
+    this.setState({
+      name: newName
+    });
+  }
+
+  handleClick() {
+    // const total = this.state.totalClicks;
+
+    // calling handleClick will 
+    // result in a state change:
+    this.setState(
+      { totalClicks: this.state.totalClicks + 1 }
+    );
+  }
+
+  // The stateful component class passes down
+  // handleClick to a stateless component class:
+  render() {
+    return (
+      <div>
+        <AttentionGrabber />
+        <GuineaPigs />
+        <Child name={this.state.name} onChange={this.changeName} />
+        <Sibling 
+           name={this.state.name} 
+          onChange={this.changeName}/>
+        <ChildClass onClick={this.handleClick} totalClicks={this.state.totalClicks}/>
+        <Wow />
+        <Home />
+        </div>
+    );
+  }
 }
 
-export default App;
+
