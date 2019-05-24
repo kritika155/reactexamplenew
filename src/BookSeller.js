@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 export default class BestSeller extends React.Component {
   render() {
     return (
@@ -20,8 +20,8 @@ export default class BestSeller extends React.Component {
   }
 }
 
-// BestSeller.propTypes = {
-//   title: React.PropTypes.string.isRequired,
-//   author: React.PropTypes.string.isRequired,
-//   weeksOnList: React.PropTypes.number.isRequired
-// };
+BestSeller.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  weeksOnList: PropTypes.number.isRequired
+};
