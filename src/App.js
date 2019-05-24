@@ -7,6 +7,8 @@ import { Wow } from './Facebook';
 import { AttentionGrabber } from './AttentionGrabber';
 import { GuineaPigs } from './GuineaPig';
 import BookList from './BookList';
+import Input from './Input';
+
 export default class ParentClass extends React.Component {
   constructor(props) {
     super(props);
@@ -42,6 +44,7 @@ export default class ParentClass extends React.Component {
         <Sibling 
            name={this.state.name} 
           onChange={this.changeName}/>
+          <Input />
            <BookList />
         <ChildClass onClick={this.handleClick} totalClicks={this.state.totalClicks}/>
         <Wow />
